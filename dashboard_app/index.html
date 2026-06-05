@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secret Scan Dashboard</title>
+  <link rel="stylesheet" href="./src/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Secret Scan Dashboard</p>
+        <h1>Scan results and risk scoring</h1>
+        <p class="hero-copy">
+          Visualize scan findings, risk scores, severity distribution, top files and secret types.
+        </p>
+      </div>
+      <div class="hero-meta">
+        <span class="badge badge-primary">Scanned results</span>
+        <span class="badge badge-secondary">Risk scoring</span>
+        <span class="badge badge-secondary">Search & filter</span>
+      </div>
+    </header>
+
+    <section class="summary-grid">
+      <article class="summary-card">
+        <span>Total findings</span>
+        <strong id="summary-total">0</strong>
+      </article>
+      <article class="summary-card">
+        <span>Critical</span>
+        <strong id="summary-critical">0</strong>
+      </article>
+      <article class="summary-card">
+        <span>High</span>
+        <strong id="summary-high">0</strong>
+      </article>
+      <article class="summary-card">
+        <span>Average risk</span>
+        <strong id="summary-average-risk">0</strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Severity distribution</h2>
+          <p>Breakdown of findings by severity level.</p>
+        </div>
+        <div class="filters">
+          <button class="filter-button active" data-filter="ALL">All</button>
+          <button class="filter-button" data-filter="CRITICAL">Critical</button>
+          <button class="filter-button" data-filter="HIGH">High</button>
+          <button class="filter-button" data-filter="MEDIUM">Medium</button>
+          <button class="filter-button" data-filter="LOW">Low</button>
+        </div>
+      </div>
+      <div id="severity-chart" class="charts-grid"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Top impacted files & secret types</h2>
+          <p>Most affected files and common secret categories.</p>
+        </div>
+        <input id="search-input" type="search" placeholder="Search file, secret type, author or description" />
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Top files</h3>
+          <ol id="top-files"></ol>
+        </div>
+        <div class="info-card">
+          <h3>Secret types</h3>
+          <ul id="secret-types"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Detailed findings</h2>
+          <p>Individual results with rule score, AI score, risk score and justification.</p>
+        </div>
+      </div>
+      <div id="findings-grid" class="findings-grid"></div>
+    </section>
+  </div>
+
+  <script type="module" src="./src/dashboard.js"></script>
+</body>
+</html>
